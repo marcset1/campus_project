@@ -1,8 +1,8 @@
 # .gitignore
 
 # Fichiers Python
-*.pyc
-__pycache__/
+#.pyc
+#__pycache__/
 
 # Fichiers de base de données
 *.sqlite3
@@ -16,7 +16,7 @@ venv/
 .idea/
 
 # Fichiers de migration
-*/migrations/*
+#*/migrations/*
 
 # Fichiers de configuration locale
 .env
