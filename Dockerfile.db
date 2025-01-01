@@ -1,0 +1,11 @@
+# Utiliser une image officielle de PostGIS comme image de base
+FROM postgis/postgis:13-3.1
+
+# Définir les variables d'environnement pour PostGIS
+ENV POSTGRES_DB servicelocationdb
+ENV POSTGRES_USER monbailleur
+ENV POSTGRES_PASSWORD 0000bailleur0000
+
+# Exposer le port de la base de données
+EXPOSE 5432
+

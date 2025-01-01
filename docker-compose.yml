@@ -1,0 +1,34 @@
+version: '3.3'
+
+services:
+  locations:
+    build:
+      context: ./backend/servicelocation
+    command: gunicorn --bind 0.0.0.0:8000 annonce.wsgi:application
+    volumes:
+      - ./backend/servicelocation:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_PORT=5432
+      - DJdb
+      - DJANGO_DB_USER=monbailleur
+      - DJANGO_DB_PASSWORD=0000bailleur0000
+
+  db:
+    image: postgis/postgis:latest
+    restart: always
+    environment:
+      POSTGRES_DB: servicelocationdb
+      POSTGRES_USER: monbailleur
+      POSTGRES_PASSWORD: 0000bailleur0000
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata: 

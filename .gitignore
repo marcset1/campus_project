@@ -1,0 +1,22 @@
+# .gitignore
+
+# Fichiers Python
+*.pyc
+__pycache__/
+
+# Fichiers de base de données
+*.sqlite3
+
+# Dossiers des environnements virtuels
+env/
+venv/
+
+# Paramètres de l'éditeur
+.vscode/
+.idea/
+
+# Fichiers de migration
+*/migrations/*
+
+# Fichiers de configuration locale
+.env
