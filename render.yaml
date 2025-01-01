@@ -1,0 +1,79 @@
+version: 1
+name: campus_project
+services:
+  locations:
+    type: web
+    name: campus-locations
+    env: docker
+    dockerfilePath: ./backend/servicelocation/Dockerfile
+    buildCommand: ""
+    startCommand: "gunicorn --bind 0.0.0.0:8000 annonce.wsgi:application"
+    volumes:
+      - name: servicelocation
+        path: /app
+    envVars:
+      DJANGO_DB_HOST: db
+      DJANGO_DB_PORT: 5432
+      DJANGO_DB_NAME: DJdb
+      DJANGO_DB_USER: monbailleur
+      DJANGO_DB_PASSWORD: 0000bailleur0000
+    healthCheckPath: "/healthz"
+    dependsOn:
+      - db
+
+  db:
+    type: database
+    name: campus-db
+    image: postgis/postgis:latest
+    envVars:
+      POSTGRES_DB: servicelocationdb
+      POSTGRES_USER: monbailleur
+      POSTGRES_PASSWORD: 0000bailleur0000
+    volumes:
+      - name: pgdata
+        path: /var/lib/postgresql/data
+    ports:
+      - 5432
+
+volumes:
+  pgdata: {}
+  servicelocation: {}version: 1
+name: campus_project
+services:
+  locations:
+    type: web
+    name: campus-locations
+    env: docker
+    dockerfilePath: ./backend/servicelocation/Dockerfile
+    buildCommand: ""
+    startCommand: "gunicorn --bind 0.0.0.0:8000 annonce.wsgi:application"
+    volumes:
+      - name: servicelocation
+        path: /app
+    envVars:
+      DJANGO_DB_HOST: db
+      DJANGO_DB_PORT: 5432
+      DJANGO_DB_NAME: DJdb
+      DJANGO_DB_USER: monbailleur
+      DJANGO_DB_PASSWORD: 0000bailleur0000
+    healthCheckPath: "/healthz"
+    dependsOn:
+      - db
+
+  db:
+    type: database
+    name: campus-db
+    image: postgis/postgis:latest
+    envVars:
+      POSTGRES_DB: servicelocationdb
+      POSTGRES_USER: monbailleur
+      POSTGRES_PASSWORD: 0000bailleur0000
+    volumes:
+      - name: pgdata
+        path: /var/lib/postgresql/data
+    ports:
+      - 5432
+
+volumes:
+  pgdata: {}
+  servicelocation: {}
